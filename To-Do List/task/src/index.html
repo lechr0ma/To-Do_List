@@ -16,30 +16,30 @@
                 <label for="input-task"></label><input id="input-task">
             </div>
             <div class="mainlist-add">
-                <button id="add-task-button" onclick="addTask()">Add task</button>
+                <button id="add-task-button" onclick="createTask()">Add task</button>
             </div>
         </div>
         <div class="mainlist-list">
             <ul id="task-list">
-                <li><input type="checkbox">
-                    <span class="task">
-                        Email David
-                    </span>
-                    <button id="delb" class="delete-btn">delete task</button> </li>
-                <li><input type="checkbox">
-                    <span class="task">
-                        Creare ideal user persona guide
-                    </span>
-                    <button class="delete-btn">delete task</button> </li>
-                <li><input type="checkbox">
-                    <span class="task">
-                        Setup A/B test
-                    </span>
-                    <button class="delete-btn">delete task</button> </li>
+
             </ul>
         </div>
     </div>
 <script src="script.js"></script>
+<script>
+    function loadTask(){
+        let fromSt = JSON.parse(localStorage.getItem(`tasks`)) || [];
+        console.log(fromSt);
+        for ( i = 0; i <= fromSt.length - 1; i++) {
+            if (fromSt[i].status == `created`) {
+                console.log(fromSt[i].status);
+                let li = document.createElement("li");
+                li.innerHTML = fromSt[i].html;
+                document.getElementById(`task-list`).appendChild(li);
+            }
+        }}
+    loadTask();
+</script>
 
 </body>
 </html>
