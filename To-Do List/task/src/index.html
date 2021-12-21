@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>To-Do List</title>
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
+<div class="container">
  <div class="header">
      <div class="title">
          <h1>To-do List</h1>
@@ -20,26 +22,34 @@
             </div>
         </div>
         <div class="mainlist-list">
-            <ul id="task-list">
+            <ul id="task-list" style="list-style-type: none">
 
             </ul>
         </div>
     </div>
+</div>
 <script src="script.js"></script>
-<script>
-    function loadTask(){
-        let fromSt = JSON.parse(localStorage.getItem(`tasks`)) || [];
-        console.log(fromSt);
-        for ( i = 0; i <= fromSt.length - 1; i++) {
-            if (fromSt[i].status == `created`) {
-                console.log(fromSt[i].status);
-                let li = document.createElement("li");
-                li.innerHTML = fromSt[i].html;
-                document.getElementById(`task-list`).appendChild(li);
-            }
-        }}
-    loadTask();
-</script>
+ <script>
+     function rain(){
+         let body = document.querySelector(`body`);
+         let i = 0;
+         while (i < 50){
+             let drop = document.createElement(`i`);
+             let size = Math.random() * 5;
+             let posx = Math.floor(Math.random() * window.innerWidth);
+             let delay = Math.random() * -20;
+             let duration = Math.random() * 5;
+             drop.style.animationDuration = 10 + duration + `s`;
+             drop.style.animationDelay =delay + `s`;
+             drop.style.left = posx + `px`;
+             drop.style.width = 0.2 + size + `px`;
+             body.appendChild(drop);
+             i++;
+
+         }
+     }
+     rain();
+ </script>
 
 </body>
 </html>
